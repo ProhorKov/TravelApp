@@ -6,11 +6,7 @@ class HomeController < ApplicationController
     if user_signed_in?
       redirect_to edit_user_registration_path
     else
-      # Страница, отображаемая для незалогиненных пользователей
+      redirect_to new_user_registration_path
     end
-  end
-
-  def dashboard
-    # Содержимое страницы для залогиненных пользователей
   end
 end
