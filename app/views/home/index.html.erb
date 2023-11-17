@@ -1,2 +1,79 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelVoyaje</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #3498db, #e74c3c);
+            color: white;
+        }
+
+        #container {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            transition: background 0.3s ease;
+        }
+
+        #loginBtn {
+            background: linear-gradient(90deg, #3498db, #2980b9);
+            margin-right: 10px;
+        }
+
+        #registerBtn {
+            background: linear-gradient(90deg, #e74c3c, #c0392b);
+        }
+
+        .button:hover {
+            filter: brightness(1.2);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #container {
+            animation: fadeIn 1s ease;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Welcome to TravelVoyaje</h1>
+        <a href="#" class="button" id="loginBtn">Вход</a>
+        <a href="#" class="button" id="registerBtn">Регистрация</a>
+    </div>
+</body>
+</html>
