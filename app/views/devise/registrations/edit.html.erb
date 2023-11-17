@@ -1,0 +1,12 @@
+<!-- app/views/devise/registrations/edit.html.erb -->
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), method: :put) do |f| %>
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name, autofocus: true %>
+
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name %>
+
+  <!-- Другие поля для обновления аккаунта -->
+
+  <%= f.submit "Обновить" %>
+<% end %>
