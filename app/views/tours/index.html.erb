@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<%= link_to 'Мой профиль', profile_path %>
+
+<h1>Все туры</h1>
+
+<div id="tours">
+  <% @tours.each do |tour| %>
+    <%= render tour %>
+    <p>
+      <%= link_to "Подробнее", tour %>
+    </p>
+  <% end %>
+</div>

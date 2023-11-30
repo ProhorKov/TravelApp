@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
+  get 'tours_users/buy/:id', to: 'tours_users#buy', as: :tours_users_buy
+  get 'tours_users/cancel/:id', to: 'tours_users#cancel', as: :tours_users_cancel
+  resources :tours
   root 'home#index'
   get 'dashboard', to: 'home#dashboard', as: 'dashboard'
 
+  get 'home/profile', to: 'home#profile', as: :profile
   get 'home/index'
   get 'home/dashboard'
   devise_for :users, controllers: {

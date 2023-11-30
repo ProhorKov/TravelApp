@@ -1,0 +1,15 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @tour %>
+
+<div>
+  <% if @user_buy_current_tour %>
+    <%= link_to "Отменить бронь", tours_users_cancel_path(@tour) %> |
+  <% else %>
+    <%= link_to "Купить", tours_users_buy_path(@tour) %> |
+<% end %>
+  <%= link_to "Изменить информацию", edit_tour_path(@tour) %> |
+  <%= link_to "Вернуться ко всем турам", tours_path %>
+
+  <%= button_to "Удалить тур", @tour, method: :delete %>
+</div>
