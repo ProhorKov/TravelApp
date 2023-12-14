@@ -15,10 +15,16 @@ class ToursController < ApplicationController
   # GET /tours/new
   def new
     @tour = Tour.new
+    authorize @tour
+  rescue Pundit::NotAuthorizedError
+    redirect_to root_path
   end
 
   # GET /tours/1/edit
   def edit
+    authorize @tour
+  rescue Pundit::NotAuthorizedError
+    redirect_to root_path
   end
 
   # POST /tours or /tours.json
@@ -27,7 +33,7 @@ class ToursController < ApplicationController
 
     respond_to do |format|
       if @tour.save
-        format.html { redirect_to tour_url(@tour), notice: "Тур был успешно создан." }
+        format.html { redirect_to :admin_page, notice: "Тур был успешно создан." }
         format.json { render :show, status: :created, location: @tour }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +46,7 @@ class ToursController < ApplicationController
   def update
     respond_to do |format|
       if @tour.update(tour_params)
-        format.html { redirect_to tour_url(@tour), notice: "Тур был успешно обновлён." }
+        format.html { redirect_to :admin_page, notice: "Тур был успешно обновлён." }
         format.json { render :show, status: :ok, location: @tour }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -51,6 +57,12 @@ class ToursController < ApplicationController
 
   # DELETE /tours/1 or /tours/1.json
   def destroy
+    begin
+      authorize @tour
+    rescue Pundit::NotAuthorizedError
+      redirect_to root_path
+      return
+    end
     @tour.destroy!
 
     respond_to do |format|
@@ -60,13 +72,14 @@ class ToursController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_tour
-      @tour = Tour.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def tour_params
-      params.require(:tour).permit(:name, :description, :country, :price, :rate)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_tour
+    @tour = Tour.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def tour_params
+    params.require(:tour).permit(:name, :description, :country, :price, :rate)
+  end
 end

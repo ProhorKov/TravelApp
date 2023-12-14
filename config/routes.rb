@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'admin', to: 'admin#index', as: :admin_page
   get 'tours_users/buy/:id', to: 'tours_users#buy', as: :tours_users_buy
   get 'tours_users/cancel/:id', to: 'tours_users#cancel', as: :tours_users_cancel
   resources :tours

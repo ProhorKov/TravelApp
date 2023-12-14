@@ -1,0 +1,18 @@
+<%= link_to 'Главная', tours_path %>
+
+<h1>Админ</h1>
+
+<%= link_to 'Новый тур', new_tour_path %>
+
+<h1>Все туры</h1>
+
+<div id="tours">
+  <% @tours.each do |tour| %>
+    <%= render tour %>
+    <p>
+      <%= link_to "Подробнее", tour %>
+      <%= link_to "Редактировать", edit_tour_path(tour) %>
+      <%= button_to "Удалить тур", tour, method: :delete %>
+    </p>
+  <% end %>
+</div>
